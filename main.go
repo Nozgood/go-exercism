@@ -1,57 +1,13 @@
 package main
 
-import "fmt"
-
-// Type declaration
-type File []bool
-type ChessBoard map[string]File
-
-func CountInFile(cb ChessBoard, file string) int {
-	count := 0
-
-	_, exists := cb[file]
-    if !exists {
-        return 0
-    }
-for index, verify := range cb[file] {
-	fmt.Printf("%v \n %v \n", index, verify)
-	if verify {
-		count ++
-	}
-}
-return count
-}
-
-func CountInRank(cb ChessBoard, rank int) int {
-	count := 0
-	if rank < 1 || rank > 8 {
-		return 0 
-	} 
-		for _, value := range cb {
-			if value[rank -1] {
-				count ++
-			}
-		}
-		return count
-}
-
-func CountAll(cb ChessBoard) int {
-	count := 0
-	for _, value := range cb {
-		for i := 0; i < len(value); i++ {
-			if value[i] {
-				count ++
-			}
-		}
-	}
-	return count
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////
+import (
+	"fmt"
+	"strconv"
+)
 
 type ElectionResult struct {
 	Name 	string
-	votes 	int
+	Votes 	int
 }
 
 func NewVoteCounter(initialVotes int) *int {
@@ -74,9 +30,20 @@ func IncrementVoteCount(counter *int, increment int) {
 func NewElectionResult(candidateName string, votes int) *ElectionResult {
 	result := ElectionResult{
 		Name: candidateName,
-		votes: votes,
+		Votes: votes,
 	}
-	return result
+	return &result
+}
+
+func DisplayResult(result *ElectionResult) string {
+	stringVote := strconv.Itoa(result.Votes)
+	stringVoteParenthese := fmt.Sprintf("(%v)", stringVote)
+	stringResult := result.Name + " " + stringVoteParenthese
+	return stringResult
+}
+
+func DecrementVotesOfCandidate(results map[string]int, candidate string) {
+	results[candidate]--
 }
 
 func main () {
@@ -84,7 +51,8 @@ func main () {
 	votes := 0
 	result := ElectionResult{
 		Name: candidateName,
-		votes: votes,
+		Votes: votes,
 	}
-	fmt.Print(&result)
+	fmt.Print(result)
+	fmt.Print(DisplayResult(&result))
 }
