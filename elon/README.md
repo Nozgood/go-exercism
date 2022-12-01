@@ -1,5 +1,5 @@
-## This exercise aims to make me practice pointer's concept
-- The exercise is about an election system, here is the link : https://exercism.org/tracks/go/exercises/elons-toy
+## This exercise aims to make me practice methods concept
+- The exercise is about a car management system, here is the link : https://exercism.org/tracks/go/exercises/elons-toy
 
 - une methode est une fonction que l'on applique sur un élement donné (le receveur)
 - le receveur est indiqué entre le nom de la méthode est le mot clé "func"
