@@ -1,13 +1,20 @@
 package main
 
 import (
-	"fmt"
-	"go-exercism/logs"
+	"go-exercism/farm"
 )
 
 func main () {
-	stringTest := "❗ recommended search product 🔍"
-	// oldRuneTest := '❗'
-	// newRuneTest := '🔍'
-	fmt.Println(logs.WithinLimit(stringTest, 29))
+	cat := farm.Cat{
+		Name: "Miaou",
+		Breed: "maine coon",
+	}
+	spider := farm.Spider{
+		Name: "Peter Parker",
+		Breed: "Human Spider",
+		Venomous: false,
+	}
+
+	farm.AllAnimalInfo(&spider)
+	farm.AllAnimalInfo(&cat)
 }
