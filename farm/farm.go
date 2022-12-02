@@ -39,9 +39,6 @@ func DivideFood(w WeightFodder, cows int) (float64, error) {
 		divideFoodResult := newFodderAmountResult / float64(cows)
 		return divideFoodResult, nil
 	} 
-	if err != nil && fodderAmountResult > 0 {
-		return 0.0, err
-	}  
 	if err == ErrScaleMalfunction && fodderAmountResult < 0 {
 		newError := errors.New("negative fodder")
 		return 0.0, newError
@@ -66,6 +63,9 @@ func DivideFood(w WeightFodder, cows int) (float64, error) {
 		displayError := errors.New(newError)
 		return 0.0, displayError
 	}
+	if err != nil  {
+		return 0.0, err
+	}  
 	divideFoodResult := fodderAmountResult / float64(cows)
 	return divideFoodResult, err
 }
