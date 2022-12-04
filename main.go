@@ -2,10 +2,15 @@ package main
 
 import (
 	"fmt"
-	"go-exercism/parsinglogs"
+	"go-exercism/meteorology"
 )
 
 func main () {
-	testValidLine := parsinglogs.IsValidLine("[BOB] Any old text")
-	fmt.Print(testValidLine)
+	testTemperature := meteorology.Temperature {
+		Degree: 42,
+		Unit: meteorology.Fahrenheit,
+	}
+	testDisplayTemperature := testTemperature.String()
+	
+	fmt.Print(testDisplayTemperature)
 }
