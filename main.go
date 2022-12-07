@@ -2,15 +2,15 @@ package main
 
 import (
 	"fmt"
-	"go-exercism/meteorology"
+	"go-exercism/census"
 )
 
 func main () {
-	testTemperature := meteorology.Temperature {
-		Degree: 42,
-		Unit: meteorology.Fahrenheit,
-	}
-	testDisplayTemperature := testTemperature.String()
-	
-	fmt.Print(testDisplayTemperature)
+	name := "Matthew Sanabria"
+	age := 29
+	address := map[string]string{"street": "Main St."}
+
+	test := census.NewResident(name, age, address)
+	test.Delete()
+	fmt.Print(test)
 }
